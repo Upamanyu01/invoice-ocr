@@ -1,0 +1,21 @@
+ocr:
+  dpi: 300
+  tesseract_psm: 6
+  tesseract_oem: 3
+
+patterns:
+  invoice_number:
+    - "(?:invoice\\s*(?:no.?|#|number)[:\\-\\s]*)([A-Z0-9\\-/]+)"
+    - "(?:inv(?:\\.|#)?\\s*)([A-Z0-9\\-/]+)"
+
+  date_patterns:
+    - "\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}"
+    - "[A-Za-z]{3,9}\\s+\\d{1,2},?\\s+\\d{4}"
+    - "\\d{4}[/-]\\d{1,2}[/-]\\d{1,2}"
+
+  subtotal:
+    - "(?:sub\\s*total|subtotal)[:\\-\\s]*([0-9,.]+)"
+  tax:
+    - "(?:tax|gst|vat)[:\\-\\s]*([0-9,.]+)"
+  total:
+    - "(?:grand\\s*total|total\\s*amount|amount\\s*due)[:\\-\\s]*([0-9,.]+)"
